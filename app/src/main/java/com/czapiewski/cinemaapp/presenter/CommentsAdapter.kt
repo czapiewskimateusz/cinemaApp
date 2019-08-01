@@ -8,7 +8,7 @@ import com.czapiewski.cinemaapp.R
 import com.czapiewski.cinemaapp.model.Comment
 import kotlinx.android.synthetic.main.comment_item.view.*
 
-class CommentsAdapter(val comments: List<Comment>) :
+class CommentsAdapter(private val comments: List<Comment>) :
     RecyclerView.Adapter<CommentsAdapter.CommentsViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommentsViewHolder {

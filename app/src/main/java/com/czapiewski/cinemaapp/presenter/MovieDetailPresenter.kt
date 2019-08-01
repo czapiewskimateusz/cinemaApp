@@ -4,7 +4,7 @@ import android.content.Context
 import android.widget.Toast
 import com.czapiewski.cinemaapp.model.Comment
 import com.czapiewski.cinemaapp.model.Comments
-import com.czapiewski.cinemaapp.view.IMovieDetails
+import com.czapiewski.cinemaapp.view.interfaces.IMovieDetails
 import com.google.firebase.database.*
 import java.math.RoundingMode
 import java.text.DecimalFormat
@@ -59,7 +59,7 @@ class MovieDetailPresenter(val comments: Comments, val view: IMovieDetails, val 
         return prefs.getString("USER_NAME", "")!!
     }
 
-    fun roundTo2Digits(number: Double): Double? {
+    private fun roundTo2Digits(number: Double): Double? {
         val df = DecimalFormat("#.##")
         df.roundingMode = RoundingMode.CEILING
         return df.format(number).replace(',', '.').toDouble()

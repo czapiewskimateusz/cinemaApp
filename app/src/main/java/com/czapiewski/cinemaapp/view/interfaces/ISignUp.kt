@@ -1,4 +1,4 @@
-package com.czapiewski.cinemaapp.view
+package com.czapiewski.cinemaapp.view.interfaces
 
 interface ISignUp {
     fun showProgress(show:Boolean)

@@ -8,11 +8,12 @@ import com.czapiewski.cinemaapp.R
 import com.czapiewski.cinemaapp.model.Movies
 import com.czapiewski.cinemaapp.presenter.MoviesAdapter
 import com.czapiewski.cinemaapp.presenter.MoviesPresenter
+import com.czapiewski.cinemaapp.view.interfaces.IMovies
 import kotlinx.android.synthetic.main.activity_movies.*
 
 class MoviesActivity : AppCompatActivity(), IMovies {
 
-    val movies = Movies(ArrayList())
+    private val movies = Movies(ArrayList())
     private val moviesPresenter = MoviesPresenter(movies, this, this)
 
     override fun onCreate(savedInstanceState: Bundle?) {

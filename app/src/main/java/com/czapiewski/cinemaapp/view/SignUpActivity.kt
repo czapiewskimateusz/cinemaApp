@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import com.czapiewski.cinemaapp.R
 import com.czapiewski.cinemaapp.presenter.SignUpPresenter
+import com.czapiewski.cinemaapp.view.interfaces.ISignUp
 import kotlinx.android.synthetic.main.activity_sign_up.*
 
 class SignUpActivity : AppCompatActivity(), ISignUp {

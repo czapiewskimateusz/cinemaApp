@@ -3,7 +3,7 @@ package com.czapiewski.cinemaapp.presenter
 import android.content.Context
 import android.widget.Toast
 import com.czapiewski.cinemaapp.model.User
-import com.czapiewski.cinemaapp.view.ISignUp
+import com.czapiewski.cinemaapp.view.interfaces.ISignUp
 import com.google.android.gms.common.util.Strings
 import com.google.firebase.database.FirebaseDatabase
 import java.util.*
@@ -36,7 +36,15 @@ class SignUpPresenter(private val view: ISignUp, private val context: Context) {
                     val user = User(uuid, userName, email, pin)
                     dBReference.child("users").child(userName).setValue(user)
                     Toast.makeText(context, "You're signed up!", Toast.LENGTH_SHORT).show()
+                    saveUserName()
                 }
+            }
+
+            private fun saveUserName() {
+                val prefs = context.getSharedPreferences(
+                    "com.czapiewski.cinemaapp", Context.MODE_PRIVATE
+                )
+                prefs.edit().putString("USER_NAME", userName).apply()
             }
 
             override fun onCancelled(databaseError: DatabaseError) {

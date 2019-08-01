@@ -1,5 +1,6 @@
 package com.czapiewski.cinemaapp.view
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
@@ -11,19 +12,19 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.czapiewski.cinemaapp.R
-import com.czapiewski.cinemaapp.model.Comment
 import com.czapiewski.cinemaapp.model.Comments
 import com.czapiewski.cinemaapp.model.Movie
 import com.czapiewski.cinemaapp.presenter.CommentsAdapter
 import com.czapiewski.cinemaapp.presenter.MovieDetailPresenter
+import com.czapiewski.cinemaapp.view.interfaces.IMovieDetails
 import com.google.android.gms.common.util.Strings
 import kotlinx.android.synthetic.main.activity_movie_detail.*
 
 class MovieDetailActivity : AppCompatActivity(), IMovieDetails, AdapterView.OnItemSelectedListener {
 
-    var comments = Comments(ArrayList())
-    var selectedScore = 0.0
-    lateinit var movie: Movie
+    private var comments = Comments(ArrayList())
+    private var selectedScore = 0.0
+    private lateinit var movie: Movie
     private val movieDetailPresenter = MovieDetailPresenter(comments, this, this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,8 +69,9 @@ class MovieDetailActivity : AppCompatActivity(), IMovieDetails, AdapterView.OnIt
             progressBar.visibility = View.INVISIBLE
     }
 
+    @SuppressLint("SetTextI18n")
     override fun updateScore(score: String) {
-        tvScore.text = score + "/5"
+        tvScore.text = "$score/5"
     }
 
     override fun updateTickets(ticketsLeft: Long) {
@@ -101,6 +103,7 @@ class MovieDetailActivity : AppCompatActivity(), IMovieDetails, AdapterView.OnIt
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun displayMovieDetails(movie: Movie) {
         tvTitle.text = movie.title
         tvDirector.text = movie.director

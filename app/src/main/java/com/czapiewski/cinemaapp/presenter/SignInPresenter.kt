@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.widget.Toast
 
-import com.czapiewski.cinemaapp.view.ISignIn
+import com.czapiewski.cinemaapp.view.interfaces.ISignIn
 import com.czapiewski.cinemaapp.view.MoviesActivity
 import com.google.android.gms.common.util.Strings
 import com.google.firebase.database.DataSnapshot
