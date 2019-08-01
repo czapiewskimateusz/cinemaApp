@@ -6,4 +6,6 @@
     <string name="sign_up">Sign up</string>
     <string name="user_name">User name</string>
     <string name="repeat_pin">Repeat PIN</string>
+    <string name="book_ticket">Book Ticket</string>
+    <string name="comment">Comment</string>
 </resources>

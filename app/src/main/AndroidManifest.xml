@@ -9,21 +9,31 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".view.MovieDetailActivity" android:parentActivityName=".view.MoviesActivity">
+        <activity
+                android:name=".view.MovieDetailActivity"
+                android:parentActivityName=".view.MoviesActivity"
+                android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".view.MoviesActivity">
+
+        <activity
+                android:name=".view.MoviesActivity"
+                android:screenOrientation="portrait">
         </activity>
+
         <activity
                 android:name=".view.SignUpActivity"
-                android:parentActivityName=".view.SignInActivity">
+                android:parentActivityName=".view.SignInActivity"
+                android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".view.SignInActivity">
+
+        <activity
+                android:name=".view.SignInActivity"
+                android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-    </application>
 
+    </application>
 </manifest>

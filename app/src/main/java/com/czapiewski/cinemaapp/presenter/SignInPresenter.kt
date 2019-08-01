@@ -36,9 +36,21 @@ class SignInPresenter(private val view: ISignIn, private val context: Context) {
 
                 private fun validatePIN(dataSnapshot: DataSnapshot) {
                     if (dataSnapshot.child("pin").value == pin) {
-                        val intent = Intent(context, MoviesActivity::class.java)
-                        context.startActivity(intent)
+                        saveUserToSharedPrefs()
+                        startMoviesActivity()
                     }
+                }
+
+                private fun startMoviesActivity() {
+                    val intent = Intent(context, MoviesActivity::class.java)
+                    context.startActivity(intent)
+                }
+
+                private fun saveUserToSharedPrefs() {
+                    val prefs = context.getSharedPreferences(
+                        "com.czapiewski.cinemaapp", Context.MODE_PRIVATE
+                    )
+                    prefs.edit().putString("USER_NAME", userName).apply()
                 }
 
                 override fun onCancelled(databaseError: DatabaseError) {
