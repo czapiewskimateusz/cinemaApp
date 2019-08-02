@@ -38,6 +38,8 @@ class SignInPresenter(private val view: ISignIn, private val context: Context) {
                     if (dataSnapshot.child("pin").value == pin) {
                         saveUserToSharedPrefs()
                         startMoviesActivity()
+                    } else {
+                        Toast.makeText(context, "Incorrect userName or pin", Toast.LENGTH_SHORT).show()
                     }
                 }
 

@@ -2,6 +2,8 @@ package com.czapiewski.cinemaapp.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.czapiewski.cinemaapp.R
@@ -35,5 +37,26 @@ class MoviesActivity : AppCompatActivity(), IMovies {
             pbMovies.visibility = View.VISIBLE
         else
             pbMovies.visibility = View.INVISIBLE
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onBackPressed() {
+        moveTaskToBack(true)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.menu_singOut -> {
+                moviesPresenter.signOut()
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

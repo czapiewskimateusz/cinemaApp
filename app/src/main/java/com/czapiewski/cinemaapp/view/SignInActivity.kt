@@ -5,7 +5,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.biometric.BiometricPrompt
 import com.czapiewski.cinemaapp.R
 import com.czapiewski.cinemaapp.presenter.SignInPresenter
@@ -15,8 +14,7 @@ import com.google.android.gms.common.util.Strings
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.concurrent.Executors
 
-class SignInActivity : AppCompatActivity(), ISignIn,
-    IBioCallbackInterface {
+class SignInActivity : AppCompatActivity(), ISignIn, IBioCallbackInterface {
 
     private val signInPresenter = SignInPresenter(this, this)
 
@@ -37,6 +35,13 @@ class SignInActivity : AppCompatActivity(), ISignIn,
 
         btnSignUp.setOnClickListener {
             startSignUpActivity()
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (!isFirstLogin()) {
+            biometricPrompt.authenticate(promptInfo)
         }
     }
 
@@ -74,15 +79,7 @@ class SignInActivity : AppCompatActivity(), ISignIn,
     }
 
     private fun signIn() {
-        if (Strings.isEmptyOrWhitespace(etUserName.text.toString()) && Strings.isEmptyOrWhitespace(etPIN.text.toString())) {
-            if (!isFirstLogin()) {
-                biometricPrompt.authenticate(promptInfo)
-            } else {
-                Toast.makeText(this, "It's your first login, you can't use your fingerprint yet", Toast.LENGTH_LONG).show()
-            }
-        } else {
-            signInPresenter.signIn(etUserName.text.toString(), etPIN.text.toString())
-        }
+        signInPresenter.signIn(etUserName.text.toString(), etPIN.text.toString())
     }
 
     private fun isFirstLogin(): Boolean {

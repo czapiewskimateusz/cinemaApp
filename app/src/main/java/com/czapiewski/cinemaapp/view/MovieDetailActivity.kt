@@ -55,11 +55,12 @@ class MovieDetailActivity : AppCompatActivity(), IMovieDetails, AdapterView.OnIt
 
     override fun notifyDataSetChanged() {
         rvComments.adapter?.notifyDataSetChanged()
-        rvComments.scrollToPosition(comments.comments.size - 1)
+        rvComments.scrollToPosition(0)
     }
 
     override fun notifyInsertedToPosition(index: Int) {
         rvComments.adapter?.notifyItemInserted(index)
+        rvComments.scrollToPosition(index)
     }
 
     override fun showProgress(show: Boolean) {

@@ -48,7 +48,8 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/tvScore" android:layout_marginBottom="8dp"
                     app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginEnd="8dp" tools:text="4.5/5" android:textSize="36sp"/>
+                    android:layout_marginEnd="8dp" tools:text="4.5/5" android:textSize="24sp"
+                    android:textColor="#D81B60"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>

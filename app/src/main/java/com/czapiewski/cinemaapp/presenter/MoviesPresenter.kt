@@ -8,6 +8,7 @@ import com.czapiewski.cinemaapp.model.Movies
 import com.czapiewski.cinemaapp.view.interfaces.IMovies
 import com.czapiewski.cinemaapp.view.interfaces.ItemOnClickListener
 import com.czapiewski.cinemaapp.view.MovieDetailActivity
+import com.czapiewski.cinemaapp.view.SignInActivity
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -40,5 +41,18 @@ class MoviesPresenter(private val movies: Movies, private val view : IMovies, pr
                 Toast.makeText(context,"Unable to load data", Toast.LENGTH_SHORT).show()
             }
         })
+    }
+
+    fun signOut() {
+        deleteUserName()
+        val intent = Intent(context, SignInActivity::class.java)
+        context.startActivity(intent)
+    }
+
+    private fun deleteUserName() {
+        val prefs = context.getSharedPreferences(
+            "com.czapiewski.cinemaapp", Context.MODE_PRIVATE
+        )
+        prefs.edit().putString("USER_NAME", "").apply()
     }
 }

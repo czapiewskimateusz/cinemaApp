@@ -36,15 +36,7 @@ class SignUpPresenter(private val view: ISignUp, private val context: Context) {
                     val user = User(uuid, userName, email, pin)
                     dBReference.child("users").child(userName).setValue(user)
                     Toast.makeText(context, "You're signed up!", Toast.LENGTH_SHORT).show()
-                    saveUserName()
                 }
-            }
-
-            private fun saveUserName() {
-                val prefs = context.getSharedPreferences(
-                    "com.czapiewski.cinemaapp", Context.MODE_PRIVATE
-                )
-                prefs.edit().putString("USER_NAME", userName).apply()
             }
 
             override fun onCancelled(databaseError: DatabaseError) {

@@ -8,4 +8,5 @@
     <string name="repeat_pin">Repeat PIN</string>
     <string name="book_ticket">Book Ticket</string>
     <string name="comment">Comment</string>
+    <string name="sign_out">Sign out</string>
 </resources>
