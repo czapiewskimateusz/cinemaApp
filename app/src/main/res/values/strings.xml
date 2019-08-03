@@ -2,11 +2,20 @@
     <string name="app_name">CinemaApp</string>
     <string name="email">Email</string>
     <string name="pin">PIN</string>
-    <string name="log_in">Log in</string>
+    <string name="log_in">Sign in</string>
     <string name="sign_up">Sign up</string>
     <string name="user_name">User name</string>
     <string name="repeat_pin">Repeat PIN</string>
     <string name="book_ticket">Book Ticket</string>
     <string name="comment">Comment</string>
-    <string name="sign_out">Sign out</string>
+    <string name="sign_out">Logout</string>
+    <string name="empty_comment">Write a comment first!</string>
+    <string name="no_tickets_left">Ups, There are no tickets left :(</string>
+    <string name="login_error">Wrong user name or password</string>
+    <string name="email_empty">Email cannot be empty</string>
+    <string name="pin_empty">PIN cannot be empty</string>
+    <string name="user_already_exists">User with given user name already exists</string>
+    <string name="wrong_email_format">Wrong email format</string>
+    <string name="pin_not_match">PINs are not the same</string>
+    <string name="username_empty">Username is empty</string>
 </resources>

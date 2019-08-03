@@ -29,10 +29,11 @@ class SignUpActivity : AppCompatActivity(), ISignUp {
     }
 
     override fun onEmailError(message: String) {
-        etUserName.error = message
+        etEmail.error = message
     }
 
     override fun onPinError(message: String) {
+        etPIN.error = message
         etPIN2.error = message
     }
 

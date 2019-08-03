@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
+            app:startDestination="@id/signInActivity">
+
+    <activity android:id="@+id/signInActivity" android:name="com.czapiewski.cinemaapp.view.SignInActivity"
+              android:label="activity_main" tools:layout="@layout/activity_main"/>
+
+    <activity android:id="@+id/signUpActivity" android:name="com.czapiewski.cinemaapp.view.SignUpActivity"
+              android:label="activity_sign_up" tools:layout="@layout/activity_sign_up"/>
+
+    <activity android:id="@+id/moviesActivity" android:name="com.czapiewski.cinemaapp.view.MoviesActivity"
+              android:label="activity_movies" tools:layout="@layout/activity_movies"/>
+
+    <activity android:id="@+id/movieDetailActivity" android:name="com.czapiewski.cinemaapp.view.MovieDetailActivity"
+              android:label="activity_movie_detail" tools:layout="@layout/activity_movie_detail"/>
+</navigation>

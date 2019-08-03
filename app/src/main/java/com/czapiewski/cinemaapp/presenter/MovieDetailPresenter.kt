@@ -2,6 +2,7 @@ package com.czapiewski.cinemaapp.presenter
 
 import android.content.Context
 import android.widget.Toast
+import com.czapiewski.cinemaapp.R
 import com.czapiewski.cinemaapp.model.Comment
 import com.czapiewski.cinemaapp.model.Comments
 import com.czapiewski.cinemaapp.view.interfaces.IMovieDetails
@@ -71,7 +72,7 @@ class MovieDetailPresenter(val comments: Comments, val view: IMovieDetails, val 
             dBReference.child("movies").child(movieId.toString()).child("tickets").setValue(ticketsLeft)
             view.updateTickets(ticketsLeft)
         } else {
-            Toast.makeText(context, "Ups, There are no tickets left :(", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, context.getString(R.string.no_tickets_left), Toast.LENGTH_SHORT).show()
         }
 
     }

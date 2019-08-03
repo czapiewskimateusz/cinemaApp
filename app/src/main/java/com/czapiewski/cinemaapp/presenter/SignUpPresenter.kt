@@ -1,8 +1,11 @@
 package com.czapiewski.cinemaapp.presenter
 
 import android.content.Context
+import android.content.Intent
 import android.widget.Toast
+import com.czapiewski.cinemaapp.R
 import com.czapiewski.cinemaapp.model.User
+import com.czapiewski.cinemaapp.view.MoviesActivity
 import com.czapiewski.cinemaapp.view.interfaces.ISignUp
 import com.google.android.gms.common.util.Strings
 import com.google.firebase.database.FirebaseDatabase
@@ -30,13 +33,26 @@ class SignUpPresenter(private val view: ISignUp, private val context: Context) {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 view.showProgress(false)
                 if (dataSnapshot.childrenCount > 0) {
-                    view.onEmailError("User with given user name already exists")
+                    view.onEmailError(context.getString(R.string.user_already_exists))
                 } else {
                     val uuid = UUID.randomUUID().toString()
                     val user = User(uuid, userName, email, pin)
                     dBReference.child("users").child(userName).setValue(user)
-                    Toast.makeText(context, "You're signed up!", Toast.LENGTH_SHORT).show()
+                    saveUser()
+                    startMoviesActivity()
                 }
+            }
+
+            private fun startMoviesActivity() {
+                val intent = Intent(context, MoviesActivity::class.java)
+                context.startActivity(intent)
+            }
+
+            private fun saveUser() {
+                val prefs = context.getSharedPreferences(
+                    "com.czapiewski.cinemaapp", Context.MODE_PRIVATE
+                )
+                prefs.edit().putString("USER_NAME", userName).apply()
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
@@ -49,28 +65,29 @@ class SignUpPresenter(private val view: ISignUp, private val context: Context) {
 
     private fun validate(email: String, pin: String, pin2: String, userName: String): Boolean {
         var passed = true
-        if (Strings.isEmptyOrWhitespace(email)) {
-            view.onEmailError("Email is empty")
+
+        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            view.onEmailError(context.getString(R.string.wrong_email_format))
             passed = false
         }
 
-        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            view.onEmailError("Wrong email format")
+        if (Strings.isEmptyOrWhitespace(email)) {
+            view.onEmailError(context.getString(R.string.email_empty))
             passed = false
         }
 
         if (Strings.isEmptyOrWhitespace(pin) || Strings.isEmptyOrWhitespace(pin2)) {
-            view.onPinError("PIN is empty")
+            view.onPinError(context.getString(R.string.pin_empty))
             passed = false
         }
 
         if (pin != pin2) {
-            view.onPinError("PINs does not match")
+            view.onPinError(context.getString(R.string.pin_not_match))
             passed = false
         }
 
         if (Strings.isEmptyOrWhitespace(userName)) {
-            view.onUserNameError("Username is empty")
+            view.onUserNameError(context.getString(R.string.username_empty))
             passed = false
         }
 

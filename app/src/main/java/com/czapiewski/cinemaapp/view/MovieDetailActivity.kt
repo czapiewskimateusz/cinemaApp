@@ -48,7 +48,7 @@ class MovieDetailActivity : AppCompatActivity(), IMovieDetails, AdapterView.OnIt
                 movieDetailPresenter.postComment(etComment.text.toString(), selectedScore, movie.id)
                 etComment.text.clear()
             } else {
-                Toast.makeText(this, "Write a comment first!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.empty_comment), Toast.LENGTH_SHORT).show()
             }
         }
     }

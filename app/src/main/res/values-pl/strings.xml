@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CinemaApp</string>
+    <string name="book_ticket">Zarezerwuj</string>
+    <string name="comment">Komentarz</string>
+    <string name="email">Email</string>
+    <string name="email_empty">Podaj email</string>
+    <string name="empty_comment">Najpiew wprowadź komentarz!</string>
+    <string name="log_in">Zaloguj się</string>
+    <string name="login_error">Niepoprawna nazwa uzytkownika lub hasło</string>
+    <string name="no_tickets_left">Ups, Nie ma więcej biletów :(</string>
+    <string name="pin">PIN</string>
+    <string name="pin_empty">Podaj kod PIN</string>
+    <string name="repeat_pin">Powtórz PIN</string>
+    <string name="sign_out">Wyloguj</string>
+    <string name="sign_up">Zarejestruj się</string>
+    <string name="user_already_exists">Użytkownik o podanej nzawie użytkownika już istnieje</string>
+    <string name="user_name">Nazwa użytkownika</string>
+    <string name="pin_not_match">Kody PIN są różne</string>
+    <string name="username_empty">Podaj nazwę uzytkownika</string>
+    <string name="wrong_email_format">Email ma zły format</string>
+</resources>

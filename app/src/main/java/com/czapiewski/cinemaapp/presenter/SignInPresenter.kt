@@ -3,6 +3,7 @@ package com.czapiewski.cinemaapp.presenter
 import android.content.Context
 import android.content.Intent
 import android.widget.Toast
+import com.czapiewski.cinemaapp.R
 
 import com.czapiewski.cinemaapp.view.interfaces.ISignIn
 import com.czapiewski.cinemaapp.view.MoviesActivity
@@ -28,7 +29,7 @@ class SignInPresenter(private val view: ISignIn, private val context: Context) {
                 private fun validateLogin(dataSnapshot: DataSnapshot) {
                     view.showProgress(false)
                     if (dataSnapshot.childrenCount == 0L) {
-                        Toast.makeText(context, "Incorrect userName or pin", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, context.getString(R.string.login_error), Toast.LENGTH_SHORT).show()
                     } else {
                         validatePIN(dataSnapshot)
                     }
@@ -39,7 +40,7 @@ class SignInPresenter(private val view: ISignIn, private val context: Context) {
                         saveUserToSharedPrefs()
                         startMoviesActivity()
                     } else {
-                        Toast.makeText(context, "Incorrect userName or pin", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, context.getString(R.string.login_error), Toast.LENGTH_SHORT).show()
                     }
                 }
 
@@ -66,11 +67,11 @@ class SignInPresenter(private val view: ISignIn, private val context: Context) {
     private fun validateCredentials(email: String, pin: String): Boolean {
         var passed = true
         if (Strings.isEmptyOrWhitespace(email)) {
-            view.onEmailError("Email is empty")
+            view.onEmailError(context.getString(R.string.username_empty))
             passed = false
         }
         if (Strings.isEmptyOrWhitespace(pin)) {
-            view.onPINError("PIN is empty")
+            view.onPINError(context.getString(R.string.pin_empty))
             passed = false
         }
         return passed
